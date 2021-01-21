@@ -1,0 +1,3 @@
+    for (int i = 0; i < bb.length(); i++) //here bb is b in string format 
+        remainderB = (remainderB * 10 + bb[i] - '0') % (c - 1);
+        power(a,remainderB,c);
