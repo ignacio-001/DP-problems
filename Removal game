@@ -1,0 +1,37 @@
+  #include<bits/stdc++.h>
+  using namespace std;
+  #define ll long long int
+  #define  rep(i,b) for (ll i =1; i <= (b); i++)
+  #define mod 1000000007 
+    #define  rep(i,b) for (ll i =1; i <= (b); i++)
+    #define  repp(i,b) for (ll i =0; i < (b); i++)
+    #define fio ios_base::sync_with_stdio(false);
+    #define test ll t; cin>>t; while(t--)
+    #define pb push_back
+    #define s(n) scanf("%lld",&n)
+    #define endl "\n"
+    typedef vector<ll> vi;
+    //HERE SECOND PLAYER ALSO USES OPTIMAL METHOD WHICH MEANS HE ALSO USES DP
+   int main(){
+     ll n;
+     cin>>n;
+     ll arr[n];
+     ll sum=0;
+     repp(i,n){
+       cin>>arr[i];
+       sum+=arr[i];
+     }
+     vector<vector<ll>> dp(n+1,vector<ll>(n+1));
+     for(ll l=n-1;l>=0;l--){
+       for(ll r=l;r<n;r++){
+         if(l==r){
+           dp[l][r]=arr[l];
+         }
+         else{
+           dp[l][r]=max(arr[l]-dp[l+1][r],arr[r]-dp[l][r-1]);
+         }
+       }
+     }
+     cout<<(sum+dp[0][n-1])/2<<endl;
+     return 0;
+   }
